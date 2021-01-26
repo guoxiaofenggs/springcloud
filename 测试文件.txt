@@ -1,0 +1,9 @@
+调试接口时出现报错:
+
+Null ModelAndView returned to DispatcherServlet with name 'mvc-dispatcher';
+
+调试结果是返回的JsonString 太长,导致json格式缺失.,数据格式原本是HashMap<String,List<String,HashMap<>>>,其中包括若干longtext字段,在把数据转成jsonString后return,java控制台出现longtext字段的部分内容,接着报错如题.
+
+解决方案:减小分页条数,或者使用缩略字段代替长文本做列表查询
+
+由此原因引发这个问题的特征: 返回结果中包含大文本,制台出现非java程式码的信息
